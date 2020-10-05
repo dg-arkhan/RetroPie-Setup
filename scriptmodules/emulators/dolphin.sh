@@ -49,16 +49,15 @@ function configure_dolphin() {
     mkRomDir "gc"
     mkRomDir "wii"
 
-    moveConfigDir "$home/.dolphin-emu" "$md_conf_root/gc"
+    moveConfigDir "$home/.dolphin-emu" "$home/RetroPie/BIOS/dolphin-emu"
 
-    if [[ ! -f "$md_conf_root/gc/Config/Dolphin.ini" ]]; then
-        mkdir -p "$md_conf_root/gc/Config"
-        cat >"$md_conf_root/gc/Config/Dolphin.ini" <<_EOF_
+    if [[ ! -f "$home/RetroPie/BIOS/dolphin-emu/Config/Dolphin.ini" ]]; then
+        mkdir -p "$home/RetroPie/BIOS/dolphin-emu/Config"
+        cat >"$home/RetroPie/BIOS/dolphin-emu/Config/Dolphin.ini" <<_EOF_
 [Display]
 FullscreenResolution = Auto
 Fullscreen = True
 _EOF_
-        chown -R $user:$user "$md_conf_root/gc/Config"
     fi
 
     addEmulator 1 "$md_id" "gc" "$md_inst/bin/dolphin-emu-nogui -e %ROM%"
