@@ -58,6 +58,7 @@ function configure_dolphin() {
 FullscreenResolution = Auto
 Fullscreen = True
 _EOF_
+		chown -R $user:$user "$home/RetroPie/BIOS/dolphin-emu/Config"
     fi
 
     addEmulator 1 "$md_id" "gc" "$md_inst/bin/dolphin-emu-nogui -e %ROM%"
