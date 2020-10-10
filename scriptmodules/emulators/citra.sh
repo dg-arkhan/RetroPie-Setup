@@ -23,7 +23,7 @@ function depends_citra() {
     fi
 
     # Additional libraries required for running
-    local depends=(libsdl2-dev doxygen qtbase5-dev libqt5opengl5-dev qtmultimedia5-dev build-essential clang libc++-dev cmake qtbase5-dev libqt5opengl5-dev qtmultimedia5-dev)
+    local depends=(doxygen qtbase5-dev libqt5opengl5-dev qtmultimedia5-dev build-essential clang libc++-dev cmake qtbase5-dev libqt5opengl5-dev qtmultimedia5-dev)
     getDepends "${depends[@]}"
 }
 
@@ -35,7 +35,7 @@ function build_citra() {
     cd "$md_build/citra"
     mkdir build
     cd build
-    cmake .. -DCMAKE_BUILD_TYPE=Release
+    cmake .. -DCMAKE_BUILD_TYPE=Release -DENABLE_QT=OFF
     make
     md_ret_require="$md_build/build/bin"
 }
