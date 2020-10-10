@@ -23,7 +23,7 @@ function depends_citra() {
     fi
 
     # Additional libraries required for running
-    local depends=(doxygen qtbase5-dev libqt5opengl5-dev qtmultimedia5-dev build-essential clang libc++-dev cmake qtbase5-dev libqt5opengl5-dev qtmultimedia5-dev)
+    local depends=(doxygen qtbase5-dev libqt5opengl5-dev qtmultimedia5-dev build-essential clang libc++-dev cmake)
     getDepends "${depends[@]}"
 }
 
@@ -43,7 +43,6 @@ function build_citra() {
 function install_citra() {
 	md_ret_files=(
 	'/build/bin/citra'
-	'/build/bin/citra-qt'
 	''
 	)
 }
@@ -54,6 +53,5 @@ function configure_citra() {
     ensureSystemretroconfig "3ds"
 
     addEmulator 0 "$md_id" "3ds" "$md_inst/citra %ROM%"
-    addEmulator 1 "$md_id-qt" "3ds" "$md_inst/citra-qt %ROM%"
     addSystem "3ds"
 }
