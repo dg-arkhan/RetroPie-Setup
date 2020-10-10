@@ -37,12 +37,12 @@ function build_citra() {
     cd build
     cmake .. -DCMAKE_BUILD_TYPE=Release -DENABLE_QT=OFF
     make
-    md_ret_require="$md_build/build/bin"
+    md_ret_require="$md_build/build/bin/Release/citra"
 }
 
 function install_citra() {
 	md_ret_files=(
-	'/build/bin/citra'
+	'/build/bin/Release/citra'
 	''
 	)
 }
