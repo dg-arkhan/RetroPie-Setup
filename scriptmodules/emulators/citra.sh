@@ -35,7 +35,7 @@ function build_citra() {
     cd "$md_build/citra"
     mkdir build
     cd build
-    cmake .. -DCMAKE_BUILD_TYPE=Release -DENABLE_QT=OFF -DCMAKE_INSTALL_PREFIX="$md_inst"
+    cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$md_inst"
     make
     md_ret_require="$md_build/build/bin/Release/citra"
 }
@@ -51,5 +51,6 @@ function configure_citra() {
     ensureSystemretroconfig "3ds"
 
     addEmulator 0 "$md_id" "3ds" "$md_inst/bin/citra %ROM%"
+    addEmulator 1 "$md_id" "3ds" "$md_inst/bin/citra-qt %ROM%"
     addSystem "3ds"
 }
