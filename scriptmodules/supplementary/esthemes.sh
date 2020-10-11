@@ -80,7 +80,7 @@ function gui_esthemes() {
         'lilbud flat'
         'lilbud flat-dark'
         'lilbud minimal'
-        'lilbud switch'
+        'dg-arkhan switch'
         'lilbud angular'
         'FlyingTomahawk futura-V'
         'FlyingTomahawk futura-dark-V'
