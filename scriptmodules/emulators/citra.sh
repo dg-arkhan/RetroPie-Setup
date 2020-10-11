@@ -11,10 +11,10 @@
 
 rp_module_id="citra"
 rp_module_desc="3ds emulator"
-rp_module_help="ROM Extension: .zip\n\nCopy your MAME roms to  $romdir/3ds"
-rp_module_licence="GPL2 https://github.com/citra-emu/citra/blob/master/license.txt"
+rp_module_help="ROM Extensions: .7z .nds .zip\n\nCopy your Nintendo DS roms to $romdir/3ds"
+rp_module_licence="GPL2 https://raw.githubusercontent.com/libretro/citra/master/license.txt"
 rp_module_section="exp"
-rp_module_flags="!arm"
+rp_module_flags="!gles !arm"
 
 function depends_citra() {
     if compareVersions $__gcc_version lt 7; then
@@ -35,16 +35,14 @@ function build_citra() {
     cd "$md_build/citra"
     mkdir build
     cd build
-    cmake .. -DCMAKE_BUILD_TYPE=Release -DENABLE_QT=OFF
+    cmake .. -DCMAKE_BUILD_TYPE=Release -DENABLE_QT=OFF -DCMAKE_INSTALL_PREFIX="$md_inst"
     make
     md_ret_require="$md_build/build/bin/Release/citra"
 }
 
 function install_citra() {
-	md_ret_files=(
-	'/build/bin/Release/citra'
-	''
-	)
+    cd build
+    make install
 }
 
 function configure_citra() {
@@ -52,6 +50,6 @@ function configure_citra() {
 
     ensureSystemretroconfig "3ds"
 
-    addEmulator 0 "$md_id" "3ds" "$md_inst/citra %ROM%"
+    addEmulator 0 "$md_id" "3ds" "$md_inst/bin/citra %ROM%"
     addSystem "3ds"
 }
